@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+include '../conSQL.php';
+
 if (empty($_SESSION['username']))
 {
 	echo "<script language='javascript'>alert('Login terlebih dahulu'); window.location = '../'</script>";
