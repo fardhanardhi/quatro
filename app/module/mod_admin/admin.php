@@ -4,10 +4,13 @@
 
         <!-- Main content -->
         <div class="col-md-12">
+            <div class="row">
+            
+            </div>
             <article>
-                <h2 class="article-title">Manage Player</h2>
+                <h2 class="article-title">Manage Administrator</h2>
                 <p class="article-meta">Posted on <time datetime="2017-05-14">14 May</time> by <a href="#"rel="author">Joe Bloggs</a></p>
-                <!-- <a href="formAddBarang.php" class="btn btn-primary"><i class='fa fa-plus-circle'></i>&nbsp;Tambah Player</a> -->
+                <a href="formAddBarang.php" class="btn btn-success"><i class='fa fa-plus-circle'></i>&nbsp;Tambah Administrator</a>
 
                 <table id="player-list" class="table mt-2">
                     <thead>
@@ -23,7 +26,7 @@
                     <tbody>
                     <?php
                     // Query command
-                    $query = "SELECT * FROM tb_user WHERE level = 'player'";
+                    $query = "SELECT * FROM tb_user WHERE level = 'admin'";
                     // Do query
                     // $con is db connection
                     // $query is query command
@@ -51,9 +54,8 @@
                                 <td><?php echo $row["nama"] ?></td>
                                 <td><?php echo $row["email"] ?></td>
                                 <td class='text-center'>
-                                    <a href='route.php?id=<?php echo $id ?>&module=editPlayer' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
-                                    <a href='' class='btn btn-dark'><i class='fa fa-ban'></i></a>
-                                    <a href='' class='btn btn-danger'><i class='fa fa-trash'></i></a>
+                                    <a href='formEditBarang.php?id=$id' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
+                                    <a href='process/actionDeleteBarang.php?id=$id' class='btn btn-danger'><i class='fa fa-trash'></i></a>
                                 </td>
                             </tr>
                             <?php 
@@ -90,23 +92,3 @@
 
     </div>
 </main>
-
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editModalLabel">Edit Player</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>

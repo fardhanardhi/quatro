@@ -45,6 +45,15 @@
         </div>
     </div>
 </div>
+
+<div id="trumbowyg-demo">
+    
+</div>
+<form action="">
+    <input type="text" name="isi" id="isi">
+    <input type="button" value="ok" id="submit1">
+</form>
+
 <!-- Main content area -->
 <main class="container-fluid">
     <div class="row">

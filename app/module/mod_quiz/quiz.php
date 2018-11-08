@@ -4,26 +4,45 @@
 
         <!-- Main content -->
         <div class="col-md-12">
+            <div class="row">
+            
+            </div>
             <article>
-                <h2 class="article-title">Manage Player</h2>
+                <h2 class="article-title">Manage Quiz</h2>
                 <p class="article-meta">Posted on <time datetime="2017-05-14">14 May</time> by <a href="#"rel="author">Joe Bloggs</a></p>
-                <!-- <a href="formAddBarang.php" class="btn btn-primary"><i class='fa fa-plus-circle'></i>&nbsp;Tambah Player</a> -->
+                <a href="formAddQuiz.php" class="btn btn-success"><i class='fa fa-plus-circle'></i>&nbsp;Tambah Quiz</a>
 
-                <table id="player-list" class="table mt-2">
+                <table id="quiz-list" class="table mt-2">
                     <thead>
                         <tr>
                             <th class='text-center'>No</th>
-                            <th class='text-center'>Foto</th>
-                            <th>Username</th>
-                            <th>Nama Lengkap</th>
-                            <th>Email</th>
+                            <th>Nama</th>
+                            <th>Penyusun</th>
+                            <th class='text-center'>Waktu</th>
+                            <th class='text-center'>Status</th>
+                            <th class='text-center'>Jumlah Soal</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     <?php
                     // Query command
-                    $query = "SELECT * FROM tb_user WHERE level = 'player'";
+                    $query = "
+                        SELECT
+                            `tb_user`.`nama` AS `penyusun`,
+                            `tb_quiz`.`id`,
+                            `tb_quiz`.`nama`,
+                            `tb_quiz`.`waktu`,
+                            `tb_quiz`.`status`
+                        FROM
+                            `tb_user`
+                        RIGHT JOIN
+                            `tb_quiz`
+                        ON
+                            `tb_user`.`id` = `tb_quiz`.`user_id`
+                    ";
+
+
                     // Do query
                     // $con is db connection
                     // $query is query command
@@ -43,21 +62,34 @@
                             // id player
                             $id = $row["id"];
 
+                            $sql = "SELECT * FROM tb_soal WHERE quiz_id = $id";
+                            $jml_soal = mysqli_query($con, $sql);
+                            
+
                             ?>
                             <tr>
                                 <td class='text-center'> <?php echo $index++; ?></td>
-                                <td class='text-center'><img style='width: 50px; height: auto' src='../img/<?php echo (empty($row["foto"]) ? 'profile/default.png' : $row["foto"]); ?>' height=25%></td>
-                                <td><?php echo $row["username"] ?></td>
                                 <td><?php echo $row["nama"] ?></td>
-                                <td><?php echo $row["email"] ?></td>
+                                <td><?php echo $row["penyusun"] ?></td>
+                                <td class='text-center'> <?php echo $row["waktu"]; ?></td>
+                                <td class='text-center'> <?php echo $row["status"]; ?></td>
+                                <td class='text-center'> <?php echo mysqli_num_rows($jml_soal); ?></td>
                                 <td class='text-center'>
-                                    <a href='route.php?id=<?php echo $id ?>&module=editPlayer' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
-                                    <a href='' class='btn btn-dark'><i class='fa fa-ban'></i></a>
-                                    <a href='' class='btn btn-danger'><i class='fa fa-trash'></i></a>
+                                    <a href='route.php?id=<?php echo $id ?>&module=editQuiz' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
+                                    <a href='process/actionDeleteBarang.php?id=<?php echo $id; ?>' class='btn btn-danger'><i class='fa fa-trash'></i></a>
                                 </td>
                             </tr>
                             <?php 
                         }
+                    }
+                    else {
+                        ?>
+
+                        <tr>
+                            <td colspan="6" class='text-center'>Tidak ada data</td>
+                        </tr>
+
+                        <?php 
                     }
                     // close mysql connection
                     mysqli_close($con); 
@@ -90,23 +122,3 @@
 
     </div>
 </main>
-
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editModalLabel">Edit Player</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
