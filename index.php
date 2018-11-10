@@ -3,13 +3,8 @@
     session_start();
     // session_destroy();
 
-    if (isset($_SESSION['username']) and isset($_SESSION['level'])) {
-        if ($_SESSION['level'] == 'admin') {
-            header("location: ./app/admin");
-        }
-        else {
-            header("location: ./app/player");
-        }
+    if (!empty($_SESSION['username'])) {
+        header('location: app/route.php?module=home');
     }
 
     if (isset($_GET['pesan'])) {

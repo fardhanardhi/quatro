@@ -23,13 +23,7 @@ if(!empty($_POST["username"]) || !empty($_POST["password"])) {
         $_SESSION["id_user"] = $id_user;
         $_SESSION["level"] = $level;
 
-        if($level == "admin") {
-            $_SESSION["as_admin"] = 'true';
-            header("Location: ../app/admin");
-        } else {
-            $_SESSION["as_player"] = 'true';
-            header("Location: ../app/player");
-        }
+        header("Location: ../app/route.php?module=home");
     } else {
         $error = urlencode("Username atau password salah!");
         header("Location: ../index.php?pesan=$error");

@@ -1,8 +1,10 @@
 <?php
 session_start();
-header('location: ./'.$_SESSION['level']); //alihkan berdasarkan hak akses
-
-if (!isset($_SESSION['id_user'])) {
-    header("Location: ../");
+if (empty($_SESSION[username])){
+	echo "<script language='javascript'>alert('Login terlebih dahulu ');
+					window.location = '../'</script>";
+}
+else{
+	header('location: route.php?module=home');
 }
 ?>

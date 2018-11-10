@@ -2,14 +2,15 @@
 <html lang="en">
 
 <head>
-    <title>MyCompany - ZyPop Web Templates</title>
+    <title>Quatro Admin</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
     <!-- Main CSS -->
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- Font Awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -17,13 +18,14 @@
 
 <body>
 
+
     <!-- Main navigation -->
     <div id="sidebar">
 
         <div class="navbar-expand-md navbar-dark">
 
             <header class="d-none d-md-block">
-                <h1><span>my</span>website</h1>
+                <h1><span>my</span>Quatro</h1>
             </header>
 
 
@@ -44,11 +46,14 @@
                 <nav class="navbar navbar-dark">
                     <div id="mainNavbar">
                         <ul class="flex-column mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            <li class="nav-item <?php echo(($_GET['module']=='home') ? 'active' : ''); ?>">
+                                <a class="nav-link" href="route.php?module=home">Home</a>
+                            </li>
+                            <li class="nav-item <?php echo(($_GET['module']=='player') ? 'active' : ''); ?>">
+                                <a class="nav-link" href="route.php?module=player">Manage Player</a>
                             </li>
 
-                            <li class="nav-item active dropdown">
+                            <!-- <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#MenuDropdown" data-toggle="collapse"
                                     aria-controls="MenuDropdown" aria-expanded="false">Examples &amp; Pages</a>
                                 <ul id="MenuDropdown" class="sub-navbar collapse flex-column">
@@ -58,19 +63,9 @@
                                             sidebar</a></li>
                                     <li class="nav-item"><a class="nav-link" href="text.html">Text / left sidebar</a></li>
                                 </ul>
-                            </li>
-
-
+                            </li> -->
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Services</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Products</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
+                                <a class="nav-link" href="logout.php">Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -100,103 +95,8 @@
     <div id="content">
         <div id="content-wrapper">
 
-            <!-- Jumbtron / Slider -->
-            <div class="jumbotron-wrap">
-                <div class="container-fluid">
-                    <div class="jumbotron static-slider">
-                        <h1 class="text-center">One column layout</h1>
-                        <p class="lead text-center">With a static slider.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Main content area -->
-            <main class="container-fluid">
-                <div class="row">
-
-                    <!-- Main content -->
-                    <div class="col">
-                        <article>
-                            <h2 class="article-title">Introduction to overflow</h2>
-
-                            <p class="article-meta">Posted on <time datetime="2017-05-14">14 May</time> by <a href="#"
-                                    rel="author">Joe Bloggs</a></p>
-
-                            <p>Welcome to overflow, a free CSS3 &amp; HTML5 responsive web template from <a href="https://zypopwebtemplates.com/"
-                                    title="ZyPOP">ZyPOP</a>. This template is completely <strong>free</strong> to use
-                                permitting a link remains back to <a href="https://zypopwebtemplates.com/" title="ZyPOP">https://zypopwebtemplates.com/</a>.</p>
-
-                            <p> Should you wish to use this template unbranded you can buy a template license from our
-                                website for 8.00 GBP, this will allow you remove all branding related to our site, for
-                                more information about this see below.</p>
-
-                            <p>This template has been tested in:</p>
-
-                            <ul>
-                                <li>Firefox</li>
-                                <li>IE / Edge</li>
-                                <li>Chrome</li>
-                                <li>Safari</li>
-                                <li>iOS / Android</li>
-                            </ul>
-
-
-                            <a href="#" class="btn btn-primary">Read more</a>
-                            <a href="#" class="btn btn-secondary">Comments</a>
-
-                        </article>
-
-                        <article>
-
-                            <h2 class="article-title">Buy unbranded</h2>
-                            <p class="article-meta">Posted on <time datetime="2017-05-14">14 May</time> by <a href="#"
-                                    rel="author">Joe Bloggs</a></p>
-
-                            <p>Purchasing a template license for 8.00 GBP (at time of writing around 10 USD) gives you
-                                the right to remove any branding including links, logos and source tags relating to
-                                ZyPOP. As well as waiving the attribution requirement, your payment will also help us
-                                provide continued support for users as well as creating new web templates. Find out
-                                more about how to buy at the licensing page on our website which can be accessed at <a
-                                    href="https://zypopwebtemplates.com/licensing" title="template license">https://zypopwebtemplates.com/licensing</a></p>
-
-                            <h3>Lorem lipsum</h3>
-
-                            <p>Morbi fermentum condimentum felis, commodo vestibulum sem mattis sed. Aliquam magna
-                                ante, mollis vitae tincidunt in, malesuada vitae turpis. Sed aliquam libero ut velit
-                                bibendum consectetur. Quisque sagittis, est in laoreet semper, enim dui consequat
-                                felis, faucibus ornare urna velit nec leo. Maecenas condimentum velit vitae est
-                                lobortis fermentum. In tristique sem vitae metus ornare luctus tempus nisl volutpat.
-                                Integer et est id nisi tempus pharetra sagittis et libero.</p>
-
-                            <a href="#" class="btn btn-primary">Read more</a>
-                            <a href="#" class="btn btn-secondary">Comments</a>
-                        </article>
-
-
-                        <!-- Example pagination Bootstrap component -->
-                        <nav>
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </main>
-
+            <!-- include content -->
+            <?php include "content.php"; ?>
 
             <!-- Footer -->
             <div class="container-fluid footer-container">
@@ -255,10 +155,9 @@
                     </div>
 
                     <div class="footer-bottom">
-                        <p class="text-center">Free Bootstrap Template by <a href="https://zypopwebtemplates.com/">ZyPop</a>.</p>
+                        <p class="text-center">Web Template by <a href="https://zypopwebtemplates.com/">ZyPop</a>.</p>
                         <p class="text-center"><a href="#">Back to top</a></p>
                     </div>
-
                 </footer>
             </div>
         </div>
@@ -266,11 +165,11 @@
 
     <!-- Bootcamp JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
 
 </body>

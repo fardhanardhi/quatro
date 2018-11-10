@@ -1,4 +1,11 @@
 <?php 
+session_start();
+// session_destroy();
+
+if (!empty($_SESSION['username'])) {
+    header('location: app/route.php?module=home');
+}
+
 if (isset($_GET['pesan'])) {
         $mess = "{$_GET['pesan']}";
     }
