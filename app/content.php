@@ -32,6 +32,9 @@ elseif ($_GET['module']=='quiz'){
 elseif ($_GET['module']=='editQuiz'){
 	include "module/mod_quiz/formEditQuiz.php";
 }
+elseif ($_GET['module']=='editSoal'){
+	include "module/mod_quiz/formEditSoal.php";
+}
 
 // Apabila modul tidak ditemukan
 else{

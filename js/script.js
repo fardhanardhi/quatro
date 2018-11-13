@@ -1,6 +1,6 @@
 // $('#trumbowyg-demo').trumbowyg();
 
-$('#trumbowyg-demo')
+$('#editor')
     .trumbowyg({
         btns: [
             ['viewHTML'],
@@ -14,11 +14,32 @@ $('#trumbowyg-demo')
         ]
     });
 
+setEditorContent();
+
 function getEditorContent() {
-    var isi = $('#trumbowyg-demo').trumbowyg('html');
+    var isi = $('#editor').trumbowyg('html');
     return isi;
+}
+
+function setEditorContent() {
+    var content = $('#isiSoal').val();
+    $('#editor').trumbowyg('html', content);
+}
+
+function clearEditorContent() {
+    var content = $('#isiSoal').val();
+    $('#editor').trumbowyg('html', "");
 }
 
 $('#submit1').click(function () {
     $('#isi').val(getEditorContent());
+});
+$('#btnReset').click(function () {
+    setEditorContent();
+});
+$('#btnClear').click(function () {
+    clearEditorContent();
+});
+$('#btnEdit').click(function () {
+    $('#isiSoal').val(getEditorContent());
 });
