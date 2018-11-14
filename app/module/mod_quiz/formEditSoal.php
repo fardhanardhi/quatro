@@ -19,18 +19,23 @@ if(mysqli_num_rows($result)==1){
         <div class="col-md-12">
             <article>
                 <h3 class="article-title">Edit soal</h3>
-                    <input type="button" class="btn btn-success" value="Reset" id="btnReset">
-                    <input type="button" class="btn btn-secondary" value="Clear" id="btnClear">
-                    <div id="editor"></div>
-                    <textarea name="isi" id="isi" cols="50" rows="5"></textarea>
-                    <input type="button" value="ok" id="submit1">
+                    
+                    <form name="rte" action="module/mod_quiz/aksiSoal.php" method="post" onsubmit="DoSubmit();">
+                        <input type="button" class="btn btn-info" value="Reset awal" id="btnReset">
+                        <input type="button" class="btn btn-warning" value="Clear" id="btnClear">
+                        <button type="submit" name="edit" class="btn btn-success">Edit</button>
 
-                    <form action="module/mod_quiz/aksiSoal.php" method="post">
-                        <input type="text" id="idSoal" name="idSoal" value="<?php echo $soal["id"];?>">
-                        <input type="text" id="isiSoal" name="isiSoal" value="<?php echo $soal["soal"];?>">
-                        <button type="submit" id="btnEdit" name="edit" class="btn btn-primary">Edit</button>
+                        <input type="hidden" name="isiSoal">
+                        <input type="hidden" id="isiSoalDb" value="<?php echo $soal["soal"]; ?>">
+                        <div id="editor">
+                            asdasd
+                        </div>
                     </form>
+
+
                     <?php
+
+                    
                     $query = "SELECT * FROM tb_pilihan WHERE soal_id=$id";
                     $result = mysqli_query($con, $query);
 

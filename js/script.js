@@ -22,7 +22,7 @@ function getEditorContent() {
 }
 
 function setEditorContent() {
-    var content = $('#isiSoal').val();
+    var content = $('#isiSoalDb').val();
     $('#editor').trumbowyg('html', content);
 }
 
@@ -31,15 +31,14 @@ function clearEditorContent() {
     $('#editor').trumbowyg('html', "");
 }
 
-$('#submit1').click(function () {
-    $('#isi').val(getEditorContent());
-});
 $('#btnReset').click(function () {
     setEditorContent();
 });
 $('#btnClear').click(function () {
     clearEditorContent();
 });
-$('#btnEdit').click(function () {
-    $('#isiSoal').val(getEditorContent());
-});
+
+function DoSubmit() {
+    document.rte.isiSoal.value = getEditorContent();
+    return true;
+}
