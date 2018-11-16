@@ -4,11 +4,12 @@ include '../../../conSQL.php';
 if(isset($_POST['edit'])){
     $idSoal = $_POST["idSoal"];
     $isiSoal = $_POST["isiSoal"];
+    $isiSoals = mysqli_real_escape_string($con, $isiSoal);
 
-    echo "<script language='javascript'>alert('$idSoal');</script>";
+    echo "<script language='javascript'>alert('$isiSoals');</script>";
 
 
-    $query = "UPDATE tb_soal SET soal = '$isiSoal' WHERE id = $idSoal";
+    $query = "UPDATE tb_soal SET soal = '$isiSoals' WHERE id = $idSoal";
     
     if (mysqli_query($con, $query)) { 
         echo "<script language='javascript'>alert('berhasil');</script>";
