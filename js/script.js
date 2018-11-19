@@ -14,7 +14,7 @@ $('#editor')
         ]
     });
 
-setEditorContent();
+// setEditorContent();
 
 function getEditorContent() {
     var isi = $('#editor').trumbowyg('html');

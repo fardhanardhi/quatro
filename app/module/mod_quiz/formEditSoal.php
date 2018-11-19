@@ -21,14 +21,12 @@ if(mysqli_num_rows($result)==1){
                 <h3 class="article-title">Edit soal</h3>
                     
                     <form name="rte" action="module/mod_quiz/aksiSoal.php" method="post" onsubmit="DoSubmit();">
-                        <input type="button" class="btn btn-danger" value="Clear" id="btnClear">
-                        <input type="button" class="btn btn-warning" value="Reset" id="btnReset">
+                        <input type="button" class="btn btn-warning" value="Clear" id="btnClear">
                         <button type="submit" name="edit" class="btn btn-primary">Edit</button>
                         <input type="hidden" name="isiSoal">
-                        <input type="hidden" id="isiSoalDb" value="<?php echo $soal["soal"]; ?>">
                         <input type="hidden" id="idSoal" name="idSoal" value="<?php echo $soal["id"];?>">
                         <div id="editor">
-                            
+                            <?php echo $soal["soal"]; ?>
                         </div>
                     </form>
 
