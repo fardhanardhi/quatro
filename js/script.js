@@ -21,19 +21,11 @@ function getEditorContent() {
     return isi;
 }
 
-function setEditorContent() {
-    var content = $('#isiSoalDb').val();
-    $('#editor').trumbowyg('html', content);
-}
-
 function clearEditorContent() {
     var content = $('#isiSoal').val();
     $('#editor').trumbowyg('html', "");
 }
 
-$('#btnReset').click(function () {
-    setEditorContent();
-});
 $('#btnClear').click(function () {
     clearEditorContent();
 });

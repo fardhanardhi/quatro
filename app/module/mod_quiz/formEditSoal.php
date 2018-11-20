@@ -44,9 +44,17 @@ if(mysqli_num_rows($result)==1){
 
 
                             ?>
-                            <div class="alert <?php echo ($row["status"] == 'benar') ? 'alert-warning' : 'alert-danger'; ?>" role="alert">
-                                <?php echo $row["pilihan"]?>
+
+                            <div class="form-group">
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" class="custom-control-input" id="customControlValidation<?php echo $index;?>" name="radio-stacked" required>
+                                    <label class="custom-control-label" for="customControlValidation<?php echo $index;?>">Pilihan <?php echo $index;?></label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan pilihan Pilihan <?php echo $index; ?>" value="<?php echo $row["pilihan"];?>">
+                                </div>
                             </div>
+
+
+                            
                             <?php 
                             $index++;
                         }
