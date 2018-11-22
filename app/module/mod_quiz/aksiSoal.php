@@ -17,7 +17,7 @@ if(isset($_POST['edit'])){
     while($row = mysqli_fetch_assoc($result)){
         
         $id = $row["id"];
-        $isiPilihan = $_POST[$id];
+        $isiPilihan = mysqli_real_escape_string($con, $_POST[$id]);
         $status = ($id == $pilihan) ? 'benar' : 'salah';
 
         mysqli_query($con, "UPDATE tb_pilihan SET pilihan = '$isiPilihan', status = '$status' WHERE id = $id");
