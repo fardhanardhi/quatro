@@ -7,7 +7,7 @@ if(isset($_POST['edit'])){
     $nama=$_POST["nama"];
     $email=$_POST["email"];
     
-    if(!$_FILES["foto"]["name"]==""){ 
+    if(!$_FILES["foto"]["name"]==""){
         $code=$_FILES["foto"]["error"];
         if($code===0){
             $nama_folder="profile";
@@ -35,7 +35,7 @@ if(isset($_POST['edit'])){
             }
         }
     }
-    else{
+    else {
         $query = "UPDATE tb_user SET username='$username', nama='$nama', email='$email' WHERE id = $idUser";
     }
     
@@ -50,6 +50,29 @@ if(isset($_POST['edit'])){
     // close mysql connection
     mysqli_close($con); 
 
+}
+else {
+    $id=$_GET["id"];
+    $aksi=$_GET["aksi"];
+    $terblokir=$_GET["terblokir"];
+
+    if ($terblokir == "true") {
+        $status = "false";
+    } else {
+        $status = "true";
+    }
+    
+    if ($aksi == "blokir") {
+        $queryBlokir = "UPDATE tb_user SET terblokir='$status' WHERE id = $id";
+
+        mysqli_query($con,$queryBlokir);
+        header("Location: ../../route.php?module=player");
+        
+    } 
+    else if ($aksi == "hapus") {
+
+    }
+    
 }
 
 
