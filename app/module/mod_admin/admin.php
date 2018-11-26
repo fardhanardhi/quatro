@@ -43,7 +43,7 @@
                             // nama_barang, harga_barang, and jml_barang is array key,
                             // They are the coloums names in table tb_barang
 
-                            // id player
+                            // id admin
                             $id = $row["id"];
 
                             ?>
@@ -54,8 +54,7 @@
                                 <td><?php echo $row["nama"] ?></td>
                                 <td><?php echo $row["email"] ?></td>
                                 <td class='text-center'>
-                                    <a href='formEditBarang.php?id=$id' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
-                                    <a href='process/actionDeleteBarang.php?id=$id' class='btn btn-danger'><i class='fa fa-trash'></i></a>
+                                    <a href='route.php?id=<?php echo $id ?>&module=editAdmin' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
                                 </td>
                             </tr>
                             <?php 

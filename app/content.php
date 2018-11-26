@@ -24,6 +24,9 @@ elseif ($_GET['module']=='editPlayer'){
 elseif ($_GET['module']=='admin'){
 	include "module/mod_admin/admin.php";
 }
+elseif ($_GET['module']=='editAdmin'){
+	include "module/mod_admin/formEditAdmin.php";
+}
 
 // Bagian Quiz
 elseif ($_GET['module']=='quiz'){
