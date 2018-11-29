@@ -55,7 +55,8 @@
                                 <td><?php echo $row["email"] ?></td>
                                 <td class='text-center'>
                                     <a href='route.php?id=<?php echo $id ?>&module=editAdmin' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
-                                </td>
+                                    <a href='module/mod_admin/aksiAdmin.php?id=<?php echo $id ?>&aksi=hapus' class='btn btn-danger'><i class='fa fa-trash'></i></a>
+                                </td>                            
                             </tr>
                             <?php 
                         }
