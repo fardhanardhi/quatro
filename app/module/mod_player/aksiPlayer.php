@@ -70,7 +70,10 @@ else {
         
     } 
     else if ($aksi == "hapus") {
+        $queryHapus = "DELETE FROM tb_user WHERE id = $id";
 
+        mysqli_query($con,$queryHapus);
+        header("Location: ../../route.php?module=player");
     }
     
 }
