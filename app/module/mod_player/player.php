@@ -44,15 +44,15 @@
                             $id = $row["id"];
 
                             ?>
-                            <tr class="<?php echo ($row["terblokir"] == 'true') ? 'bg-dark' : ''; ?>">
+                            <tr class="<?php echo ($row["terblokir"] == 'true') ? 'table-secondary' : ''; ?>">
                                 <td class='text-center'> <?php echo $index++; ?></td>
                                 <td class='text-center'><img style='width: 50px; height: auto' src='../img/<?php echo (empty($row["foto"]) ? 'profile/default.png' : $row["foto"]); ?>' height=25%></td>
                                 <td><?php echo $row["username"] ?></td>
                                 <td><?php echo $row["nama"] ?></td>
                                 <td><?php echo $row["email"] ?></td>
                                 <td class='text-center'>
+                                    <a href='module/mod_player/aksiPlayer.php?id=<?php echo $id ?>&terblokir=<?php echo ($row["terblokir"] == 'true') ? 'true' : 'false'; ?>&aksi=blokir' class='btn <?php echo ($row["terblokir"] == 'true') ? 'btn-light' : 'btn-dark'; ?>'><i class='fa <?php echo ($row["terblokir"] == 'true') ? 'fa-unlock-alt' : 'fa-lock'; ?>'></i></a>
                                     <a href='route.php?id=<?php echo $id ?>&module=editPlayer' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
-                                    <a href='module/mod_player/aksiPlayer.php?id=<?php echo $id ?>&terblokir=<?php echo ($row["terblokir"] == 'true') ? 'true' : 'false'; ?>&aksi=blokir' class='btn <?php echo ($row["terblokir"] == 'true') ? 'btn-primary' : 'btn-dark'; ?>'><i class='fa <?php echo ($row["terblokir"] == 'true') ? 'fa-unlock-alt' : 'fa-lock'; ?>'></i></a>
                                     <a href='module/mod_player/aksiPlayer.php?id=<?php echo $id ?>&aksi=hapus' class='btn btn-danger'><i class='fa fa-trash'></i></a>
                                 </td>
                             </tr>
