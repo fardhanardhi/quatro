@@ -19,8 +19,8 @@
                             <th>Nama</th>
                             <th>Penyusun</th>
                             <th class='text-center'>Waktu</th>
-                            <th class='text-center'>Status</th>
                             <th class='text-center'>Jumlah Soal</th>
+                            <th class='text-center'>Status</th>
                             <th class="text-center">Action</th>
                         </tr>
                     </thead>
@@ -67,16 +67,17 @@
                             
 
                             ?>
-                            <tr>
+                            <tr class="<?php echo ($row["status"] == 'open') ? 'table-warning' : ''; ?>">
                                 <td class='text-center'> <?php echo $index++; ?></td>
                                 <td><?php echo $row["nama"] ?></td>
                                 <td><?php echo $row["penyusun"] ?></td>
                                 <td class='text-center'> <?php echo $row["waktu"]; ?></td>
-                                <td class='text-center'> <?php echo $row["status"]; ?></td>
                                 <td class='text-center'> <?php echo mysqli_num_rows($jml_soal); ?></td>
+                                <td class='text-center'> <span class="badge badge-pill <?php echo ($row["status"] == 'open') ? 'badge-success' : 'badge-dark'; ?>"><?php echo ($row["status"] == 'open') ? 'Aktif' : 'Mati'; ?></span></td>
                                 <td class='text-center'>
+                                    <a href='module/mod_quiz/aksiQuiz.php?id=<?php echo $id ?>&status=<?php echo ($row["status"] == 'open') ? 'open' : 'close'; ?>&aksi=status' class='btn btn-dark'><i class='fa <?php echo ($row["status"] == 'open') ? 'fa-toggle-on' : 'fa-toggle-off'; ?>'></i></a>
                                     <a href='route.php?id=<?php echo $id ?>&module=editQuiz' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
-                                    <a href='process/actionDeleteBarang.php?id=<?php echo $id; ?>' class='btn btn-danger'><i class='fa fa-trash'></i></a>
+                                    <a href='module/mod_quiz/aksiQuiz.php?id=<?php echo $id ?>&aksi=hapus' class='btn btn-danger'><i class='fa fa-trash'></i></a>
                                 </td>
                             </tr>
                             <?php 

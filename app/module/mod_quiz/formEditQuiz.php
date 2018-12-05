@@ -47,7 +47,6 @@ if(mysqli_num_rows($result)==1){
                                                 <div class="col-md-auto">
                                                     <div class="row">
                                                         <a href='route.php?id=<?php echo $soal_id ?>&module=editSoal' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
-                                                        <a href='' class='btn btn-dark'><i class='fa fa-ban'></i></a>
                                                         <a href='' class='btn btn-danger'><i class='fa fa-trash'></i></a>
                                                     </div>
                                                 </div>
