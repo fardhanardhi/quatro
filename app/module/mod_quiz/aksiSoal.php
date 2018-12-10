@@ -7,8 +7,6 @@ if(isset($_POST['edit'])){
     $isiSoals = mysqli_real_escape_string($con, $isiSoal);
     $pilihan = $_POST["pilihan"];
 
-    echo "<script language='javascript'>alert('$isiSoals');</script>";
-
     $query = "UPDATE tb_soal SET soal = '$isiSoals' WHERE id = $idSoal";
 
     $queryPilihan = "SELECT * FROM tb_pilihan WHERE soal_id=$idSoal";
@@ -33,9 +31,23 @@ if(isset($_POST['edit'])){
     
     // close mysql connection
     mysqli_close($con); 
-
 }
-
+else {
+    $id=$_GET["id"];
+    $aksi=$_GET["aksi"];
+    
+    if ($aksi == "hapus") {
+        $queryHapus = "DELETE FROM tb_soal WHERE id = $id";
+    
+        if (mysqli_query($con, $queryHapus)) { 
+            echo "<script language='javascript'>alert('berhasil');</script>";
+            header("Location: ../../route.php?module=quiz");
+        } else {
+            $error = urldecode("Update Gagal!");
+            echo "<script language='javascript'>alert('$error'); window.location = '../../route.php?module=quiz'</script>";
+        }
+    }
+}
 
 
 ?>
