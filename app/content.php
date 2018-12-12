@@ -31,6 +31,9 @@ if ($_SESSION['level'] == 'admin')
 	elseif ($_GET['module']=='editAdmin'){
 		include "module/mod_admin/formEditAdmin.php";
 	}
+	elseif ($_GET['module']=='addAdmin'){
+		include "module/mod_admin/formAddAdmin.php";
+	}
 	
 	// Bagian Quiz
 	elseif ($_GET['module']=='quiz'){

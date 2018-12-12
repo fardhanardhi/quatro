@@ -10,7 +10,7 @@
             <article>
                 <h2 class="article-title">Manage Administrator</h2>
                 <p class="article-meta">Posted on <time datetime="2017-05-14">14 May</time> by <a href="#"rel="author">Joe Bloggs</a></p>
-                <a href="formAddBarang.php" class="btn btn-success"><i class='fa fa-plus-circle'></i>&nbsp;Tambah Administrator</a>
+                <a href="route.php?module=addAdmin" class="btn btn-success"><i class='fa fa-plus-circle'></i>&nbsp;Tambah Administrator</a>
 
                 <table id="player-list" class="table mt-2">
                     <thead>
