@@ -30,36 +30,47 @@ if(mysqli_num_rows($result)==1){
                         </div>
                     
 
+                        <table id="pilihan-list" class="table mt-2">
+                            <tbody>
 
-                    <?php
+                                <?php
+                                
+                                $query = "SELECT * FROM tb_pilihan WHERE soal_id=$id";
+                                $result = mysqli_query($con, $query);
 
-                    
-                    $query = "SELECT * FROM tb_pilihan WHERE soal_id=$id";
-                    $result = mysqli_query($con, $query);
+                                if (mysqli_num_rows($result) > 0){
+                                    $index = 1;
+                                    while($row = mysqli_fetch_assoc($result)){
+                                        $pilihan_id = $row["id"];
 
-                    if (mysqli_num_rows($result) > 0){
-                        $index = 1;
-                        while($row = mysqli_fetch_assoc($result)){
-                            $pilihan_id = $row["id"];
+                                        ?>
+
+                                        <tr>
+                                            <td style="white-space: nowrap; width: 1%;">
+                                                <label class="container">
+                                                <!-- <input type="radio" checked="checked" name="radio"> -->
+                                                    <input type="radio" class="custom-control-input" id="pilihanSoal<?php echo $index;?>" name="pilihan" <?php echo ($row["status"] == 'benar') ? 'checked' : '' ?> value=<?php echo $row["id"]; ?> required>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <div class="form-group">
+                                                        <input type="text" class="form-control" name="<?php echo $row["id"]; ?>" id="exampleFormControlInput1" placeholder="Masukan pilihan Pilihan <?php echo $index; ?>" value="<?php echo $row["pilihan"];?>">
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        
+                                        <?php 
+                                        $index++;
+                                    }
+                                }
+                                // close mysql connection
+                                mysqli_close($con); 
+                                ?>
 
 
-                            ?>
-
-                            <div class="form-group">
-                                <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="pilihanSoal<?php echo $index;?>" name="pilihan" <?php echo ($row["status"] == 'benar') ? 'checked' : '' ?> value=<?php echo $row["id"]; ?> required>
-                                    <label class="custom-control-label" for="pilihanSoal<?php echo $index;?>">Pilihan <?php echo $index;?></label>
-                                    <input type="text" class="form-control" name="<?php echo $row["id"]; ?>" id="exampleFormControlInput1" placeholder="Masukan pilihan Pilihan <?php echo $index; ?>" value="<?php echo $row["pilihan"];?>">
-                                </div>
-                            </div>
-                            
-                            <?php 
-                            $index++;
-                        }
-                    }
-                    // close mysql connection
-                    mysqli_close($con); 
-                    ?>
+                            </tbody>
+                        </table>
                     </form>
             </article>
             <!-- Example pagination Bootstrap component -->
