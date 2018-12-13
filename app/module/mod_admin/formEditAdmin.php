@@ -24,12 +24,12 @@ if(mysqli_num_rows($result)==1){
                         <legend>Data diri</legend>
                         <input type="hidden" name="idUser" value="<?php echo $user["id"] ?>">
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" value="<?php echo $user["username"] ?>" required>
-                        </div>
-                        <div class="form-group">
                             <label for="nama">Nama Lengkap</label>
                             <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $user["nama"] ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" value="<?php echo $user["username"] ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
