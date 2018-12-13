@@ -42,6 +42,9 @@ if ($_SESSION['level'] == 'admin')
 	elseif ($_GET['module']=='editQuiz'){
 		include "module/mod_quiz/formEditQuiz.php";
 	}
+	elseif ($_GET['module']=='addQuiz'){
+		include "module/mod_quiz/formAddQuiz.php";
+	}
 	elseif ($_GET['module']=='editSoal'){
 		include "module/mod_quiz/formEditSoal.php";
 	}

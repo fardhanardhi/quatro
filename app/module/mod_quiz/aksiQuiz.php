@@ -23,6 +23,25 @@ if(isset($_POST['edit'])){
     mysqli_close($con); 
 
 }
+else if(isset($_POST['add'])){
+    
+    $nama = $_POST["nama"];
+    $waktu = date('H:i:s', mktime(0,$_POST["waktu"],0));
+    $kode = generateRandomString();
+    $idUser = $_SESSION["id_user"];
+
+    $query = "INSERT INTO tb_quiz(nama, user_id, waktu, kode) VALUES('$nama', $idUser, '$waktu', '$kode')";
+
+    if (mysqli_query($con, $query)) {
+        header("Location: ../../route.php?module=quiz");
+    } else {
+        $error = urlencode("Gagal tambah");
+        echo "<script language='javascript'>alert('$idUser'); window.location = '../../route.php?module=quiz'</script>";
+    }
+
+    mysqli_close($con);
+}
+
 else {
     $id=$_GET["id"];
     $aksi=$_GET["aksi"];
@@ -49,4 +68,9 @@ else {
     }
 }
 
+function generateRandomString($length = 5) {
+    return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
+}
+
 ?>
+

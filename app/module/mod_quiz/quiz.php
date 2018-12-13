@@ -10,7 +10,7 @@
             <article>
                 <h2 class="article-title">Manage Quiz</h2>
                 <p class="article-meta">Posted on <time datetime="2017-05-14">14 May</time> by <a href="#"rel="author">Joe Bloggs</a></p>
-                <a href="formAddQuiz.php" class="btn btn-success"><i class='fa fa-plus-circle'></i>&nbsp;Tambah Quiz</a>
+                <a href="route.php?module=addQuiz" class="btn btn-success"><i class='fa fa-plus-circle'></i>&nbsp;Tambah Quiz</a>
 
                 <table id="quiz-list" class="table mt-2">
                     <thead>
@@ -18,6 +18,7 @@
                             <th class='text-center'>No</th>
                             <th>Nama</th>
                             <th>Penyusun</th>
+                            <th class='text-center'>Kode</th>
                             <th class='text-center'>Waktu</th>
                             <th class='text-center'>Jumlah Soal</th>
                             <th class='text-center'>Status</th>
@@ -33,7 +34,8 @@
                             `tb_quiz`.`id`,
                             `tb_quiz`.`nama`,
                             `tb_quiz`.`waktu`,
-                            `tb_quiz`.`status`
+                            `tb_quiz`.`status`,
+                            `tb_quiz`.`kode`
                         FROM
                             `tb_user`
                         RIGHT JOIN
@@ -71,6 +73,7 @@
                                 <td class='text-center'> <?php echo $index++; ?></td>
                                 <td><?php echo $row["nama"] ?></td>
                                 <td><?php echo $row["penyusun"] ?></td>
+                                <td class='text-center'> <?php echo $row["kode"]; ?></td>
                                 <td class='text-center'> <?php echo $row["waktu"]; ?></td>
                                 <td class='text-center'> <?php echo mysqli_num_rows($jml_soal); ?></td>
                                 <td class='text-center'> <span class="badge badge-pill <?php echo ($row["status"] == 'open') ? 'badge-success' : 'badge-dark'; ?>"><?php echo ($row["status"] == 'open') ? 'Aktif' : 'Mati'; ?></span></td>
