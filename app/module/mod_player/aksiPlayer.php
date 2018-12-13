@@ -43,7 +43,7 @@ if(isset($_POST['edit'])){
         echo "<script language='javascript'>alert('berhasil');</script>";
         header("Location: ../../route.php?module=player");
     } else {
-        $error = urldecode("Update Gagal! Cek kembali ekstensi file anda (*.jpeg,*.jpg,*.png)<br>");
+        $error = urldecode("Update Gagal! Username telah dipakai");
         echo "<script language='javascript'>alert('$error'); window.location = '../../route.php?module=player'</script>";
     }
     
