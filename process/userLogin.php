@@ -16,7 +16,7 @@ if(!empty($_POST["username"]) || !empty($_POST["password"])) {
     if(mysqli_num_rows($result) == 1) {
         $row = mysqli_fetch_assoc($result);
         
-        $id_user = $row["id_user"];
+        $id_user = $row["id"];
         $level = $row["level"];
 
         $_SESSION["username"] = $username;
