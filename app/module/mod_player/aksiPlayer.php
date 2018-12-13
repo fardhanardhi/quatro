@@ -1,5 +1,8 @@
 <?php
 include '../../../conSQL.php';
+session_start();
+
+
 // Get id from form
 if(isset($_POST['edit'])){
     $idUser = $_POST["idUser"];

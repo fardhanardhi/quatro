@@ -1,6 +1,8 @@
 <?php
 include '../../../conSQL.php';
 
+session_start();
+
 if(isset($_POST['edit'])){
     $idQuiz = $_POST["idQuiz"];
     $nama = $_POST["nama"];
