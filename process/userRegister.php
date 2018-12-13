@@ -5,10 +5,10 @@ $error = '';
 if (isset($_POST['register'])) {
     
 
-    $nama = trim($_POST['nama']); // get posted data and remove whitespace
-    $username = trim($_POST['username']); // get posted data and remove whitespace
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
+    $nama = $_POST['nama'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
     // check username exist or not
     $query = "SELECT * FROM tb_user WHERE username = '$username'";
