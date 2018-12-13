@@ -52,6 +52,8 @@ $minutesConvert = minutes($quiz["waktu"]);
                 </form>
                 <fieldset>
                     <legend>Data soal</legend>
+                    <a href="route.php?idQuiz=<?php echo $quiz["id"] ?>&module=addSoal" class="btn btn-success mb-3"><i class='fa fa-plus-circle'></i>&nbsp;Tambah Soal</a>
+
                     <div class="accordion" id="accordionExample">
 
                         <?php
@@ -77,8 +79,8 @@ $minutesConvert = minutes($quiz["waktu"]);
                                             </div>
                                             <div class="col-md-auto">
                                                 <div class="row">
-                                                    <a href='route.php?id=<?php echo $soal_id ?>&module=editSoal' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
-                                                    <a href='module/mod_quiz/aksiSoal.php?id=<?php echo $soal_id ?>&aksi=hapus' class='btn btn-danger'><i class='fa fa-trash'></i></a>
+                                                    <a href='route.php?quizId=<?php echo $quiz["id"] ?>&id=<?php echo $soal_id ?>&module=editSoal' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
+                                                    <a href='module/mod_quiz/aksiSoal.php?quizId=<?php echo $quiz["id"] ?>&id=<?php echo $soal_id ?>&aksi=hapus' class='btn btn-danger'><i class='fa fa-trash'></i></a>
                                                 </div>
                                             </div>
                                         </div>

@@ -48,6 +48,9 @@ if ($_SESSION['level'] == 'admin')
 	elseif ($_GET['module']=='editSoal'){
 		include "module/mod_quiz/formEditSoal.php";
 	}
+	elseif ($_GET['module']=='addSoal'){
+		include "module/mod_quiz/formAddSoal.php";
+	}
 	
 	// Apabila modul tidak ditemukan
 	else{
