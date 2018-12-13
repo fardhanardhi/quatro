@@ -6,9 +6,10 @@ session_start();
 if(isset($_POST['edit'])){
     $idQuiz = $_POST["idQuiz"];
     $nama = $_POST["nama"];
+    $kode = $_POST["kode"];
     $waktu = date('H:i:s', mktime(0,$_POST["waktu"],0));
     
-    $query = "UPDATE tb_quiz SET nama='$nama', waktu='$waktu' WHERE id = $idQuiz";
+    $query = "UPDATE tb_quiz SET nama='$nama', waktu='$waktu', kode='$kode' WHERE id = $idQuiz";
     
     if (mysqli_query($con, $query)) { 
         echo "<script language='javascript'>alert('berhasil');</script>";

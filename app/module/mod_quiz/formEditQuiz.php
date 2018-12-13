@@ -31,17 +31,21 @@ $minutesConvert = minutes($quiz["waktu"]);
                         <legend>Data quiz</legend>
                         <input type="hidden" name="idQuiz" value="<?php echo $quiz["id"] ?>">
                         <div class="form-group">
-                            <label for="username">Nama Quiz</label>
+                            <label for="nama">Nama Quiz</label>
                             <input type="text" class="form-control" id="username" name="nama" value="<?php echo $quiz["nama"] ?>" required>
                         </div>
                         <div class="form-group">
-                            <label for="nama">Waktu pengerjaan</label>
+                            <label for="waktu">Waktu pengerjaan</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroupPrepend">Menit</span>
                                 </div>
                                 <input type="number" class="form-control" id="nama" name="waktu" value="<?php echo $minutesConvert ?>" required>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="kode">Kode Quiz</label>
+                            <input type="text" class="form-control" id="kode" name="kode" value="<?php echo $quiz["kode"] ?>" required>
                         </div>
                         <button type="submit" name="edit" class="btn btn-primary">Edit</button>
                     </fieldset>
