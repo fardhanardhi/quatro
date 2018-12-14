@@ -9,12 +9,19 @@ $idQuiz=$_GET["idQuiz"];
             <article>
                 <h3 class="article-title">Tambah soal</h3>
                     
-                    <form name="rte" action="module/mod_quiz/aksiSoal.php" method="post" onsubmit="DoSubmit();">
+                    <form name="rte" action="module/mod_quiz/aksiSoal.php" method="post" onsubmit="DoSubmit();" enctype="multipart/form-data">
                         <input type="button" class="btn btn-warning" value="Clear" id="btnClear">
-                        <button type="submit" name="add" class="btn btn-primary">Edit</button>
+                        <button type="submit" name="add" class="btn btn-primary">Tambah</button>
                         <input type="hidden" name="isiSoal">
                         <input type="hidden" name="idQuiz" value="<?php echo $idQuiz ?>">
                         <div id="editor">
+                        </div>
+                        <div class="form-group">
+                            <label for="foto">Gambar soal</label>
+                            <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="gambar">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
                         </div>
                     
                         <table id="pilihan-list" class="table mt-2">

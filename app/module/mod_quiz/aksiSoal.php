@@ -8,7 +8,39 @@ if(isset($_POST['edit'])){
     $isiSoals = mysqli_real_escape_string($con, $isiSoal);
     $pilihan = $_POST["pilihan"];
 
-    $query = "UPDATE tb_soal SET soal = '$isiSoals' WHERE id = $idSoal";
+    if(!$_FILES["gambar"]["name"]==""){
+        $code=$_FILES["gambar"]["error"];
+        if($code===0){
+            $nama_folder="soal";
+            $tmp=$_FILES["gambar"]["tmp_name"];
+            $nama_file=$_FILES["gambar"]["name"];
+            $path="../../../img/$nama_folder/$nama_file";
+            $pathdb="$nama_folder/$nama_file";
+            $upload_check=false;
+            $tipe_file=array("image/jpeg","image/jpg","image/png");
+    
+            if(!in_array($_FILES["gambar"]["type"],$tipe_file)){
+                $error.="Cek kembali ekstensi file anda (*.jpeg,*.jpg,*.png)<br>";
+                echo "<script language='javascript'>alert('$error'); window.location = '../../route.php?module=player'</script>";
+                $upload_check=true;
+            }
+            if($upload_check==false){
+                $gambar_lama = $_POST["gambar_lama"];
+                $pathDel = "../../../img/$gambar_lama";
+                unlink($pathDel);
+            }
+            if(!$upload_check and move_uploaded_file($tmp,$path)){
+                $query = "UPDATE tb_soal SET soal = '$isiSoals', gambar = '$pathdb' WHERE id = $idSoal";
+            }
+            else{
+                $error="Upload gambar gagal $tmp   $path  $upload_check";
+                echo "<script language='javascript'>alert('$error'); window.location = '../../route.php?module=player'</script>";
+            }
+        }
+    }
+    else {
+        $query = "UPDATE tb_soal SET soal = '$isiSoals' WHERE id = $idSoal";
+    }
 
     $queryPilihan = "SELECT * FROM tb_pilihan WHERE soal_id=$idSoal";
     $result = mysqli_query($con, $queryPilihan);
@@ -40,10 +72,47 @@ else if(isset($_POST['add'])){
     $isiSoals = mysqli_real_escape_string($con, $isiSoal);
     $pilihan = $_POST["pilihan"];
 
-    $query = "INSERT INTO tb_soal(soal, quiz_id) VALUES('$isiSoals', $idQuiz)";
-    mysqli_query($con, $query);
 
-    $newIdSoal = mysqli_insert_id($con);
+
+
+
+    if(!$_FILES["gambar"]["name"]==""){
+        $code=$_FILES["gambar"]["error"];
+        if($code===0){
+            $nama_folder="soal";
+            $tmp=$_FILES["gambar"]["tmp_name"];
+            $nama_file=$_FILES["gambar"]["name"];
+            $path="../../../img/$nama_folder/$nama_file";
+            $pathdb="$nama_folder/$nama_file";
+            $upload_check=false;
+            $tipe_file=array("image/jpeg","image/jpg","image/png");
+    
+            if(!in_array($_FILES["gambar"]["type"],$tipe_file)){
+                $error.="Cek kembali ekstensi file anda (*.jpeg,*.jpg,*.png)<br>";
+                echo "<script language='javascript'>alert('$error'); window.location = '../../route.php?module=player'</script>";
+                $upload_check=true;
+            }
+            if(!$upload_check and move_uploaded_file($tmp,$path)){
+                $query = "INSERT INTO tb_soal(soal, gambar, quiz_id) VALUES('$isiSoals', '$pathdb', $idQuiz)";
+            }
+            else{
+                $error="Upload gambar gagal $tmp   $path  $upload_check";
+                echo "<script language='javascript'>alert('$error'); window.location = '../../route.php?module=player'</script>";
+            }
+        }
+    }
+    else {
+        $query = "INSERT INTO tb_soal(soal, quiz_id) VALUES('$isiSoals', $idQuiz)";
+    }
+    
+    if (mysqli_query($con, $query)) { 
+        $newIdSoal = mysqli_insert_id($con);
+        echo "<script language='javascript'>alert('berhasil');</script>";
+        header("Location: ../../route.php?id=$idQuiz&module=editQuiz");
+    } else {
+        $error = urldecode("Update Gagal!");
+        echo "<script language='javascript'>alert('$error'); window.location = '../../route.php?id=$idQuiz&module=editQuiz'</script>";
+    }
 
     $macamPilihan = [];
     for ($j=0; $j < $jumlahPilihan; $j++) { 

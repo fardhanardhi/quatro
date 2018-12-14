@@ -21,7 +21,7 @@ if(mysqli_num_rows($result)==1){
             <article>
                 <h3 class="article-title">Edit soal</h3>
                     
-                    <form name="rte" action="module/mod_quiz/aksiSoal.php" method="post" onsubmit="DoSubmit();">
+                    <form name="rte" action="module/mod_quiz/aksiSoal.php" method="post" onsubmit="DoSubmit();" enctype="multipart/form-data">
                         <input type="button" class="btn btn-warning" value="Clear" id="btnClear">
                         <button type="submit" name="edit" class="btn btn-primary">Edit</button>
                         <input type="hidden" name="isiSoal">
@@ -30,7 +30,26 @@ if(mysqli_num_rows($result)==1){
                         <div id="editor">
                             <?php echo $soal["soal"]; ?>
                         </div>
-                    
+                        <div class="form-group">
+                            <label for="foto">Foto</label>
+                            <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="gambar">
+                            <input type="hidden" id="gambar_lama" name="gambar_lama" value="<?php echo $soal["gambar"];?>">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <?php 
+                            if (!empty($soal["gambar"])) {
+                            ?> 
+                                <center>
+                                    <img style='width: 70%; height: auto;' src='../img/<?php echo $soal["gambar"]; ?>'> 
+                                </center>
+                            <?php 
+                            }
+                            ?>
+                            <input type="hidden" name="foto_lama" value="<?php echo $user["foto"] ?>">
+                        </div>
 
                         <table id="pilihan-list" class="table mt-2">
                             <tbody>

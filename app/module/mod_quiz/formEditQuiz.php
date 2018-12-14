@@ -89,7 +89,19 @@ $minutesConvert = minutes($quiz["waktu"]);
                             </div>
                             <div id="collapse<?php echo $index; ?>" class="collapse" aria-labelledby="heading<?php echo $index; ?>" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    <?php echo $row["soal"]; ?>                                        
+                                    <?php echo $row["soal"]; ?>     
+                                                                       
+                                </div>
+                                <div class="card-body">
+                                    <?php 
+                                    if (!empty($row["gambar"])) {
+                                    ?> 
+                                        <center>
+                                            <img style='width: 200px; height: auto;' src='../img/<?php echo $row["gambar"]; ?>'> 
+                                        </center>
+                                    <?php 
+                                    }
+                                    ?>
                                 </div>
                                 <div class="card-body">
 

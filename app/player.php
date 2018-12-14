@@ -151,7 +151,7 @@
                     </div>
 
                     <div class="footer-bottom">
-                        <p class="text-center">Web Template by <a href="https://zypopwebtemplates.com/">ZyPop</a>.</p>
+                        <p class="text-center">Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://github.com/fardhanardhi">fardhanardhi</a>.</p>
                         <p class="text-center"><a href="#">Back to top</a></p>
                     </div>
                 </footer>

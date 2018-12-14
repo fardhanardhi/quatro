@@ -27,7 +27,9 @@ if(isset($_POST['edit'])){
                 $upload_check=true;
             }
             if($upload_check==false){
-                unlink($_POST["foto_lama"]);
+                $foto_lama = $_POST["foto_lama"];
+                $pathDel = "../../../img/$foto_lama";
+                unlink($pathDel);
             }
             if(!$upload_check and move_uploaded_file($tmp,$path)){
                 $query = "UPDATE tb_user SET username='$username', nama='$nama', email='$email', foto='$pathdb' WHERE id = $idUser";
