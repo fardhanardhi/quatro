@@ -38,7 +38,10 @@ if(mysqli_num_rows($result)==1){
                         </div>
                         <div class="form-group">
                             <label for="foto">Foto</label>
-                            <input type="file" name="foto" id="foto" class="form-control">
+                            <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="foto">
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <img style='width: 200px; height: auto;' src='../img/<?php echo (empty($user["foto"]) ? 'profile/default.png' : $user["foto"]); ?>'>
