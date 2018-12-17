@@ -18,15 +18,22 @@ if(!empty($_POST["username"]) || !empty($_POST["password"])) {
         
         $id_user = $row["id"];
         $level = $row["level"];
+        $terblokir = $row["terblokir"];
 
-        $_SESSION["username"] = $username;
-        $_SESSION["id_user"] = $id_user;
-        $_SESSION["level"] = $level;
-
-        if ($level == 'admin') {
-            header("Location: ../app/route.php?module=quiz");
+        // cek blokir
+        if ($terblokir == 'true') {
+            $error = urlencode("Akun anda terblokir");
+            header("Location: ../index.php?pesan=$error");
         } else {
-            header("Location: ../app/route.php?module=home");
+            $_SESSION["username"] = $username;
+            $_SESSION["id_user"] = $id_user;
+            $_SESSION["level"] = $level;
+    
+            if ($level == 'admin') {
+                header("Location: ../app/route.php?module=quiz");
+            } else {
+                header("Location: ../app/route.php?module=home");
+            }
         }
         
     } else {
