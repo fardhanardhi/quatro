@@ -189,7 +189,7 @@
                                 <td class='text-center'> <?php echo $row["waktu"]; ?></td>
                                 <td class='text-center'> <?php echo mysqli_num_rows($jml_soal); ?></td>
                                 <td class='text-center'>
-                                    <a href='#' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
+                                    <a href='route.php?id=<?php echo $id ?>&module=infoQuiz' class='btn btn-warning'><i class='fa fa-pencil'></i></a>
                                 </td>
                             </tr>
                             <?php 

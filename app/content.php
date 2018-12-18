@@ -63,6 +63,9 @@ else {
 	if ($_GET['module']=='home'){
 		include "module/mod_beranda/beranda.php";
 	}
+	elseif ($_GET['module']=='infoQuiz'){
+		include "module/mod_play/infoQuiz.php";
+	}
 	else{
 		include "module/page_not_found.php";
 	}
