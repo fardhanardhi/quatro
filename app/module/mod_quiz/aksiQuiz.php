@@ -33,7 +33,8 @@ else if(isset($_POST['add'])){
     $query = "INSERT INTO tb_quiz(nama, user_id, waktu, kode) VALUES('$nama', $idUser, '$waktu', '$kode')";
 
     if (mysqli_query($con, $query)) {
-        header("Location: ../../route.php?module=quiz");
+        $newIdQuiz = mysqli_insert_id($con);
+        header("Location: ../../route.php?id=$newIdQuiz&module=editQuiz");
     } else {
         $error = urlencode("Gagal tambah");
         echo "<script language='javascript'>alert('$idUser'); window.location = '../../route.php?module=quiz'</script>";
