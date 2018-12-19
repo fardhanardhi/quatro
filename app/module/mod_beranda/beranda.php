@@ -1,3 +1,6 @@
+<?php 
+$idUser = $_SESSION["id_user"];
+?>
 <!-- Jumbtron / Slider -->
 <div class="jumbotron-wrap">
     <div class="container-fluid">
@@ -16,51 +19,38 @@
 
                 </div>
 
-
-
-
                     <?php
-                    // Query command
                     $query = "
                         SELECT
-                            `tb_user`.`nama` AS `penyusun`,
-                            `tb_quiz`.`id`,
-                            `tb_quiz`.`nama`,
-                            `tb_quiz`.`waktu`,
-                            `tb_quiz`.`status`,
-                            `tb_quiz`.`kode`
+                            a.nama AS 'penyusun',
+                            b.id,
+                            b.nama,
+                            b.waktu,
+                            b.status,
+                            b.kode
                         FROM
-                            `tb_user`
-                        RIGHT JOIN
-                            `tb_quiz`
-                        ON
-                            `tb_user`.`id` = `tb_quiz`.`user_id`
-                        WHERE `tb_quiz`.`status` = 'open'
-                    ";
+                            tb_quiz b,
+                            tb_user a
+                        WHERE
+                            a.id = b.user_id AND STATUS = 'open' AND b.id NOT IN(
+                            SELECT
+                                quiz_id
+                            FROM
+                                tb_hasil_quiz
+                            WHERE
+                                user_id = $idUser
+                        )                    
+                        ";
 
-
-                    // Do query
-                    // $con is db connection
-                    // $query is query command
                     $result = mysqli_query($con, $query);
 
-                    // Check row number, if we have data on db ( > 0), show the result data
                     if (mysqli_num_rows($result) > 0){
-                        // Create row index
                         $index = 1;
-                        // Do loop through data
                         while($row = mysqli_fetch_assoc($result)){
-                            // Print result to HTML structure
-                            // $row is the iterator
-                            // nama_barang, harga_barang, and jml_barang is array key,
-                            // They are the coloums names in table tb_barang
-
-                            // id player
                             $id = $row["id"];
 
                             $sql = "SELECT * FROM tb_soal WHERE quiz_id = $id";
                             $jml_soal = mysqli_query($con, $sql);
-                            
 
                             ?>
                             <div class="carousel-item">
@@ -89,16 +79,7 @@
 
                         <?php 
                     }
-                    // close mysql connection
                     ?>
-
-
-
-
-
-
-
-            
 
             </div>
 
@@ -114,9 +95,6 @@
     </div>
 </div>
 
-
-
-<!-- Main content area -->
 <main class="container-fluid">
     <div class="row">
 
@@ -142,44 +120,37 @@
                     // Query command
                     $query = "
                         SELECT
-                            `tb_user`.`nama` AS `penyusun`,
-                            `tb_quiz`.`id`,
-                            `tb_quiz`.`nama`,
-                            `tb_quiz`.`waktu`,
-                            `tb_quiz`.`status`,
-                            `tb_quiz`.`kode`
+                            a.nama AS 'penyusun',
+                            b.id,
+                            b.nama,
+                            b.waktu,
+                            b.status,
+                            b.kode
                         FROM
-                            `tb_user`
-                        RIGHT JOIN
-                            `tb_quiz`
-                        ON
-                            `tb_user`.`id` = `tb_quiz`.`user_id`
-                        WHERE `tb_quiz`.`status` = 'open'
-                    ";
+                            tb_quiz b,
+                            tb_user a
+                        WHERE
+                            a.id = b.user_id AND STATUS = 'open' AND b.id NOT IN(
+                            SELECT
+                                quiz_id
+                            FROM
+                                tb_hasil_quiz
+                            WHERE
+                                user_id = $idUser
+                        )                    
+                        ";
 
 
-                    // Do query
-                    // $con is db connection
-                    // $query is query command
                     $result = mysqli_query($con, $query);
 
-                    // Check row number, if we have data on db ( > 0), show the result data
                     if (mysqli_num_rows($result) > 0){
-                        // Create row index
                         $index = 1;
-                        // Do loop through data
                         while($row = mysqli_fetch_assoc($result)){
-                            // Print result to HTML structure
-                            // $row is the iterator
-                            // nama_barang, harga_barang, and jml_barang is array key,
-                            // They are the coloums names in table tb_barang
 
-                            // id player
                             $id = $row["id"];
 
                             $sql = "SELECT * FROM tb_soal WHERE quiz_id = $id";
                             $jml_soal = mysqli_query($con, $sql);
-                            
 
                             ?>
                             <tr>
