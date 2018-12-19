@@ -37,6 +37,24 @@ if(isset($_POST['selesai'])){
                 }
             }
         }
+
+        $id_user = $_SESSION["id_user"];
+
+        $query = "
+            INSERT
+            INTO
+                `tb_hasil_quiz`(
+                    `user_id`,
+                    `quiz_id`,
+                    `tanggal`,
+                    `soal_benar`,
+                    `soal_salah`,
+                    `soal_kosong`
+                )
+            VALUES('$id_user', '$idQuiz', NOW(), '$jBenar', '$jSalah', '$jKosong');
+        ";
+        mysqli_query($con, $query);
+
         header("Location: ../../route.php?module=hasilQuiz&jBenar=$jBenar&jSalah=$jSalah&jKosong=$jKosong");
     }
     else {
