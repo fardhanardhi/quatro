@@ -8,7 +8,7 @@ session_start();
 // include "../fungsi/fungsi_combobox.php";
 
 
-
+// admin
 if ($_SESSION['level'] == 'admin') 
 {
 	// Bagian home
@@ -58,6 +58,7 @@ if ($_SESSION['level'] == 'admin')
 	  include "module/page_not_found.php";
 	}
 }
+// player
 else {
 	// Bagian Home
 	if ($_GET['module']=='home'){
@@ -65,6 +66,9 @@ else {
 	}
 	elseif ($_GET['module']=='infoQuiz'){
 		include "module/mod_play/infoQuiz.php";
+	}
+	elseif ($_GET['module']=='hasilQuiz'){
+		include "module/mod_play/hasilQuiz.php";
 	}
 	else{
 		include "module/page_not_found.php";

@@ -114,73 +114,65 @@ include '../conSQL.php';
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-12 col-12">
+                        <form action="module/mod_play/aksiQuiz.php" method="post">
+                            <?php
+                            $query = "SELECT * FROM tb_soal WHERE quiz_id=$idQuiz";
+                            $result = mysqli_query($con, $query);
 
-                          
+                            if (mysqli_num_rows($result) > 0){
+                                $index = 1;
+                                while($row = mysqli_fetch_assoc($result)){
+                                    $soal_id = $row["id"];
+                            ?>
                             
-                            
-                            
-                        <?php
-                        $query = "SELECT * FROM tb_soal WHERE quiz_id=$idQuiz";
-                        $result = mysqli_query($con, $query);
-
-                        if (mysqli_num_rows($result) > 0){
-                            $index = 1;
-                            while($row = mysqli_fetch_assoc($result)){
-                                $soal_id = $row["id"];
-                        ?>
-
-
-                        
-                        <div id="section<?php echo $index; ?>">  
-                            <div class="card border-success mt-5 mb-5">
-                                <div class="card-header">Soal Nomor <?php echo $index; ?></div>
-                                <div class="card-body text-success">
-                                    <?php echo $row["soal"]; ?>     
-                                    <?php 
-                                    if (!empty($row["gambar"])) {
-                                    ?> 
-                                        <center>
-                                            <img style='width: 700px; height: auto;' src='../img/<?php echo $row["gambar"]; ?>'> 
-                                        </center>
-                                    <?php 
-                                    }
-                                    ?>
-                                </div>
-                                <div class="card-footer">
-                                    <?php
-                                    $query_pilihan = "SELECT * FROM tb_pilihan WHERE soal_id=$soal_id";
-                                    $result_pilihan = mysqli_query($con, $query_pilihan);
-
-                                    if (mysqli_num_rows($result_pilihan) > 0){
-                                        while($row_pilihan = mysqli_fetch_assoc($result_pilihan)){
-
-                                    ?>
-
-                                    <div class="radio-toolbar">
-                                        <input type="radio" id="radio<?php echo $row_pilihan["id"]?>" name="radios<?php echo $row["id"]?>" value="all">
-                                        <label for="radio<?php echo $row_pilihan["id"]?>"><?php echo $row_pilihan["pilihan"]?></label>
-                                    </div>
-
-                                    <?php 
+                            <div id="section<?php echo $index; ?>">  
+                                <div class="card border-success mt-5 mb-5">
+                                    <div class="card-header">Soal Nomor <?php echo $index; ?></div>
+                                    <div class="card-body text-success">
+                                        <?php echo $row["soal"]; ?>     
+                                        <?php 
+                                        if (!empty($row["gambar"])) {
+                                        ?> 
+                                            <center>
+                                                <img style='width: 700px; height: auto;' src='../img/<?php echo $row["gambar"]; ?>'> 
+                                            </center>
+                                        <?php 
                                         }
-                                    }
-                                    ?>
+                                        ?>
+                                    </div>
+                                    <div class="card-footer">
+                                        <?php
+                                        $query_pilihan = "SELECT * FROM tb_pilihan WHERE soal_id=$soal_id";
+                                        $result_pilihan = mysqli_query($con, $query_pilihan);
 
+                                        if (mysqli_num_rows($result_pilihan) > 0){
+                                            while($row_pilihan = mysqli_fetch_assoc($result_pilihan)){
+
+                                        ?>
+
+                                        <div class="radio-toolbar">
+                                            <input type="radio" id="radio<?php echo $row_pilihan["id"]?>" name="soal<?php echo $row["id"]?>" value="<?php echo $row_pilihan["id"]?>">
+                                            <label for="radio<?php echo $row_pilihan["id"]?>"><?php echo $row_pilihan["pilihan"]?></label>
+                                        </div>
+
+                                        <?php 
+                                            }
+                                        }
+                                        ?>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <?php 
-                            $index++;
+                            <?php 
+                                $index++;
+                                }
                             }
-                        }
-                        // close mysql connection
-                        mysqli_close($con); 
-                        ?>
-                            
-                            
-                            
-                            
-                        </div>
+                            // close mysql connection
+                            mysqli_close($con); 
+                            ?>
+                            <input type="hidden" name="idQuiz" value="<?php echo $idQuiz ?>">
+                            <button type="submit" name="selesai" class="btn btn-primary btn-block mb-5"><h1 class="text-light ">Selesai</h1></button>
+                        </form>
                     </div>
                 </div>
             </div>
