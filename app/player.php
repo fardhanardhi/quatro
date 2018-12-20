@@ -49,18 +49,9 @@
                             <li class="nav-item <?php echo(($_GET['module']=='home') ? 'active' : ''); ?>">
                                 <a class="nav-link" href="route.php?module=home">Home <span class="sr-only">(current)</span></a>
                             </li>
-
-                            <!-- <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#MenuDropdown" data-toggle="collapse"
-                                    aria-controls="MenuDropdown" aria-expanded="false">Examples &amp; Pages</a>
-                                <ul id="MenuDropdown" class="sub-navbar collapse flex-column">
-                                    <li class="nav-item"><a class="nav-link" href="examples.html">Style Examples</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="three-column.html">Three Column</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="one-column.html">One column / no
-                                            sidebar</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="text.html">Text / left sidebar</a></li>
-                                </ul>
-                            </li> -->
+                            <li class="nav-item <?php echo(($_GET['module']=='hasilQuiz') ? 'active' : ''); ?>">
+                                <a class="nav-link" href="route.php?module=hasilQuiz">Hasil Quiz <span class="sr-only">(current)</span></a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="logout.php">Logout</a>
                             </li>

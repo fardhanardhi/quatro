@@ -70,15 +70,6 @@ $idUser = $_SESSION["id_user"];
                             <?php 
                         }
                     }
-                    else {
-                        ?>
-
-                        <tr>
-                            <td colspan="6" class='text-center'>Tidak ada data</td>
-                        </tr>
-
-                        <?php 
-                    }
                     ?>
 
             </div>
@@ -170,7 +161,7 @@ $idUser = $_SESSION["id_user"];
                         ?>
 
                         <tr>
-                            <td colspan="6" class='text-center'>Tidak ada data</td>
+                            <td colspan="6" class='text-center'>Tidak ada soal yang aktif</td>
                         </tr>
 
                         <?php 
