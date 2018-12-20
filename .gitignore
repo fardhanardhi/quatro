@@ -4,3 +4,4 @@ img/soal/*
 
 # exception to the rule
 !img/profile/default.png
+!img/soal/default.png
