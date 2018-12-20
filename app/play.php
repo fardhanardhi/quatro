@@ -4,6 +4,7 @@ session_start();
 include '../conSQL.php';
 
     $idQuiz = $_POST["idQuiz"];
+    $kode = $_POST["kode"];
 
     $query="SELECT * FROM tb_quiz WHERE id=$idQuiz";
     $result=mysqli_query($con,$query);
@@ -15,7 +16,12 @@ include '../conSQL.php';
         echo "Quiz tidak ditemukan";
     }
 
-
+    if ($quiz["kode"] != $kode) {
+        $error="kode salah";
+        echo "<script language='javascript'>alert('$error'); window.location = 'route.php?>&module=home'</script>";
+    } 
+        # code...
+    
 ?>
 
 <!DOCTYPE html>

@@ -29,7 +29,11 @@ if(mysqli_num_rows($result)==1){
                         <legend>Info Quiz</legend>
                         <input type="hidden" name="idQuiz" value="<?php echo $id ?>">
 
-                        <button type="submit" name="mulai" class="btn btn-primary">Mulai</button>
+                        <div class="form-group">
+                            <input type="text" name="kode" placeholder="Masukan kode Quiz"></input>
+                            <button type="submit" name="mulai" class="btn btn-primary">Mulai</button>
+                        </div>
+
                     </fieldset>
                 </form>
 
