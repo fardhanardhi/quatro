@@ -9,8 +9,9 @@ $idUser = $_SESSION["id_user"];
                 <div class="carousel-item active">
                     <div class="jumbotron">
                         <h1 class="text-center">Welcome to Quatro</h1>
-                        <p class="lead text-center">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                            elit.</p>
+                        <p class="lead text-center">
+                            Aplikasi Quiz Online berbasis Web yang mudah digunakan.
+                        </p>
                         <p class="lead text-center">
                             <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-info"></i>
                                 &nbsp; Learn more</a>
@@ -56,12 +57,12 @@ $idUser = $_SESSION["id_user"];
                             <div class="carousel-item">
                                 <div class="jumbotron">
                                     <h1 class="text-center"><?php echo $row["nama"]?></h1>
-                                    <p class="lead text-center">Lorem ipsum dolor sit amet, consectetuer adipiscing
-                                        elit.</p>
                                     <p class="lead text-center">
-                                        <a class="btn btn-primary btn-lg" href="#" role="button"><i class="fa fa-pencil"></i>
+                                        Quiz yang disusun oleh <?php echo $row["penyusun"]?> dengan jumlah total <?php echo mysqli_num_rows($jml_soal); ?> soal.</p>
+                                    <p class="lead text-center">
+                                        <a class="btn btn-primary btn-lg" href="route.php?id=<?php echo $id ?>&module=infoQuiz" role="button"><i class="fa fa-pencil"></i>
                                             &nbsp; Kerjakan</a>
-                                        <a class="btn btn-secondary btn-lg" href="#" role="button"><i class="fa fa-info"></i>
+                                        <a class="btn btn-secondary btn-lg" href="route.php?id=<?php echo $id ?>&module=infoQuiz" role="button"><i class="fa fa-info"></i>
                                             &nbsp; Info</a>
                                     </p>
                                 </div>

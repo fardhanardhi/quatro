@@ -76,7 +76,7 @@ $jml_soal = mysqli_query($con, $sql);
                                     Waktu Pengerjaan:
                                 </td>
                                 <td>
-                                    <?php echo $minutesConvert?>
+                                    <?php echo $minutesConvert?> Menit
                                 </td>
                             </tr>
                             <tr>

@@ -17,7 +17,7 @@ include '../conSQL.php';
     }
 
     if ($quiz["kode"] != $kode) {
-        $error="kode salah";
+        $error="kode salah, tanyakan kode soal pada penyusun soal atau administrator";
         echo "<script language='javascript'>alert('$error'); window.location = 'route.php?>&module=home'</script>";
     } 
         # code...
