@@ -1,5 +1,6 @@
 # exclude everything
-img/*
+img/profile/*
+img/soal/*
 
 # exception to the rule
-!img/default.png
+!img/profile/default.png
