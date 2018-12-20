@@ -60,6 +60,9 @@
                             <li class="nav-item <?php echo(($_GET['module']=='admin') ? 'active' : ''); ?>">
                                 <a class="nav-link" href="route.php?module=admin">Manage Administrator</a>
                             </li>
+                            <li class="nav-item <?php echo(($_GET['module']=='editHasilQuiz') ? 'active' : ''); ?>">
+                                <a class="nav-link" href="route.php?module=editHasilQuiz">Manage Hasil Quiz</a>
+                            </li>
                             <li class="nav-item <?php echo(($_GET['module']=='quiz') ? 'active' : ''); ?>">
                                 <a class="nav-link" href="route.php?module=quiz">Manage Quiz</a>
                             </li>

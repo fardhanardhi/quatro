@@ -51,6 +51,11 @@ if ($_SESSION['level'] == 'admin')
 	elseif ($_GET['module']=='addSoal'){
 		include "module/mod_quiz/formAddSoal.php";
 	}
+
+	elseif ($_GET['module']=='editHasilQuiz'){
+		include "module/mod_hasil_quiz/editHasilQuiz.php";
+	}
+
 	
 	// Apabila modul tidak ditemukan
 	else{
@@ -68,7 +73,7 @@ else {
 		include "module/mod_play/infoQuiz.php";
 	}
 	elseif ($_GET['module']=='hasilQuiz'){
-		include "module/mod_play/hasilQuiz.php";
+		include "module/mod_hasil_quiz/hasilQuiz.php";
 	}
 	else{
 		include "module/page_not_found.php";
