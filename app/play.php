@@ -116,7 +116,7 @@ include '../conSQL.php';
                     <div class="col-sm-12 col-12">
                         <form action="module/mod_play/aksiQuiz.php" method="post">
                             <?php
-                            $query = "SELECT * FROM tb_soal WHERE quiz_id=$idQuiz";
+                            $query = "SELECT * FROM tb_soal WHERE quiz_id=$idQuiz ORDER BY RAND()";
                             $result = mysqli_query($con, $query);
 
                             if (mysqli_num_rows($result) > 0){
@@ -142,7 +142,7 @@ include '../conSQL.php';
                                     </div>
                                     <div class="card-footer">
                                         <?php
-                                        $query_pilihan = "SELECT * FROM tb_pilihan WHERE soal_id=$soal_id";
+                                        $query_pilihan = "SELECT * FROM tb_pilihan WHERE soal_id=$soal_id ORDER BY RAND()";
                                         $result_pilihan = mysqli_query($con, $query_pilihan);
 
                                         if (mysqli_num_rows($result_pilihan) > 0){
