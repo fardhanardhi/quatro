@@ -34,6 +34,11 @@ if ($_SESSION['level'] == 'admin')
 	elseif ($_GET['module']=='addAdmin'){
 		include "module/mod_admin/formAddAdmin.php";
 	}
+
+	// profil
+	elseif ($_GET['module']=='editProfil'){
+		include "module/mod_profil/formEditProfil.php";
+	}
 	
 	// Bagian Quiz
 	elseif ($_GET['module']=='quiz'){
@@ -75,6 +80,12 @@ else {
 	elseif ($_GET['module']=='hasilQuiz'){
 		include "module/mod_hasil_quiz/hasilQuiz.php";
 	}
+
+	// profil
+	elseif ($_GET['module']=='editProfil'){
+		include "module/mod_profil/formEditProfil.php";
+	}
+	
 	else{
 		include "module/page_not_found.php";
 	}
