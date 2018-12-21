@@ -1,3 +1,18 @@
+<?php
+
+$id=$_SESSION["id_user"];
+$query="SELECT * FROM tb_user WHERE id=$id";
+$result=mysqli_query($con,$query);
+
+$user='';
+if(mysqli_num_rows($result)==1){
+    $user=mysqli_fetch_assoc($result);
+}else{
+    echo "User tidak ditemukan";
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -24,9 +39,8 @@
 
         <div class="navbar-expand-md navbar-dark">
 
-            <header class="d-none d-md-block">
-                <h1><span>my</span>Quatro</h1>
-            </header>
+            <img style='width: 100%; height: auto; ' src='../img/<?php echo (empty($user["foto"]) ? 'profile/default.png' : $user["foto"]); ?>'>
+            <div style="background-color: #00a326;" class=" h-10">&nbsp;</div>
 
 
             <!-- Mobile menu toggle and header -->
@@ -51,6 +65,9 @@
                             </li>
                             <li class="nav-item <?php echo(($_GET['module']=='hasilQuiz') ? 'active' : ''); ?>">
                                 <a class="nav-link" href="route.php?module=hasilQuiz">Hasil Quiz <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item <?php echo(($_GET['module']=='editProfil') ? 'active' : ''); ?>">
+                                <a class="nav-link" href="route.php?module=editProfil">Profil <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="logout.php">Logout</a>

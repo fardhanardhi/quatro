@@ -3,31 +3,39 @@ session_start();
 
 include '../conSQL.php';
 
-    $idQuiz = $_POST["idQuiz"];
-    $kode = $_POST["kode"];
+$idQuiz = $_POST["idQuiz"];
+$kode = $_POST["kode"];
 
-    $query="SELECT * FROM tb_quiz WHERE id=$idQuiz";
-    $result=mysqli_query($con,$query);
+$query="SELECT * FROM tb_quiz WHERE id=$idQuiz";
+$result=mysqli_query($con,$query);
 
-    $quiz='';
-    if(mysqli_num_rows($result)==1){
-        $quiz=mysqli_fetch_assoc($result);
-    }else{
-        echo "Quiz tidak ditemukan";
-    }
+$quiz='';
+if(mysqli_num_rows($result)==1){
+    $quiz=mysqli_fetch_assoc($result);
+}else{
+    echo "Quiz tidak ditemukan";
+}
 
-    if ($quiz["kode"] != $kode) {
-        $error="kode salah, tanyakan kode soal pada penyusun soal atau administrator";
-        echo "<script language='javascript'>alert('$error'); window.location = 'route.php?>&module=home'</script>";
-    } 
-        # code...
-    
+if ($quiz["kode"] != $kode) {
+    $error="kode salah, tanyakan kode soal pada penyusun soal atau administrator";
+    echo "<script language='javascript'>alert('$error'); window.location = 'route.php?>&module=home'</script>";
+} 
+
+
+function minutes($time){
+    $time = explode(':', $time);
+    return ($time[0]*60) + ($time[1]) + ($time[2]/60);
+}
+
+$minutesConvert = minutes($quiz["waktu"]);
+$detik = $minutesConvert * 60;
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Quatro Admin</title>
+    <title>Quatro</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -71,7 +79,12 @@ include '../conSQL.php';
         <div class="navbar-expand-md navbar-dark">
 
             <header class="d-none d-md-block">
-                <h1><span>my</span>Quatro</h1>
+                <h1>
+                    <span>Waktu:</span>
+                    <br>
+                    <div id="display">
+                    </div>
+                </h1>
             </header>
 
 
@@ -177,7 +190,7 @@ include '../conSQL.php';
                             mysqli_close($con); 
                             ?>
                             <input type="hidden" name="idQuiz" value="<?php echo $idQuiz ?>">
-                            <button type="submit" name="selesai" class="btn btn-primary btn-block mb-5"><h1 class="text-light ">Selesai</h1></button>
+                            <button id="selesai" type="submit" name="selesai" class="btn btn-primary btn-block mb-5"><h1 class="text-light ">Selesai</h1></button>
                         </form>
                     </div>
                 </div>
@@ -187,9 +200,7 @@ include '../conSQL.php';
     </div>
 
 
-
-
-
+                    
 
 
 
@@ -201,6 +212,36 @@ include '../conSQL.php';
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
         crossorigin="anonymous"></script>
+
+    <script>
+        function CountDown(duration, display) {
+            if (!isNaN(duration)) {
+                var timer = duration, minutes, seconds;
+                
+              var interVal=  setInterval(function () {
+                    minutes = parseInt(timer / 60, 10);
+                    seconds = parseInt(timer % 60, 10);
+
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                    $(display).html("<b>" + minutes + "m : " + seconds + "s" + "</b>");
+                    if (--timer < 0) {
+                        timer = duration;
+                       SubmitFunction();
+                       $('#display').empty();
+                       clearInterval(interVal)
+                    }
+                    },1000);
+            }
+        }
+        
+        function SubmitFunction(){
+            $('#selesai').click();
+        }
+    
+         CountDown("<?php echo $detik ?>",$('#display'));
+    </script>
 
 </body>
 </html>
