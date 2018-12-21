@@ -1,8 +1,8 @@
 <?php
-$dbUrl = "localhost";
-$dbUser = "root";
-$dbPass = "";
-$dbName = "db_quiz";
+$dbUrl  = ""; // url host
+$dbUser = ""; // db username
+$dbPass = ""; // db password
+$dbName = ""; // db name
 
 $con = mysqli_connect($dbUrl, $dbUser, $dbPass, $dbName);
 if (!$con) {
