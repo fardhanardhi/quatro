@@ -1,5 +1,5 @@
 # Quatro.
-> Quiz and Trivia Online
+> Quiz and Trivia Online. — https://quatro-play.herokuapp.com
 ## Getting started
 
 **Clone the repo**
