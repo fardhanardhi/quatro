@@ -1,5 +1,3 @@
-// $('#trumbowyg-demo').trumbowyg();
-
 $('#editor')
     .trumbowyg({
         btns: [
@@ -13,8 +11,6 @@ $('#editor')
             ['fullscreen']
         ]
     });
-
-// setEditorContent();
 
 function getEditorContent() {
     var isi = $('#editor').trumbowyg('html');
