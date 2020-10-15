@@ -6,7 +6,7 @@ jQuery(document).ready(function ($) {
     // Define a blank array for the effect positions. This will be populated based on width of the title.
     var bArray = [];
     // Define a size array, this will be used to vary bubble sizes
-    var sArray = [4, 6, 8, 10];
+    var sArray = [5, 7, 9, 11];
 
     // Push the header width values to bArray
     for (var i = 0; i < $('.bubbles').width(); i++) {
@@ -32,7 +32,7 @@ jQuery(document).ready(function ($) {
         // Callback function used to remove finsihed animations from the page
         $('.individual-bubble').animate({
             'bottom': '100%',
-            'opacity': '-=0.7'
+            'opacity': '-=0.5'
         }, 3000, function () {
             $(this).remove()
         });
